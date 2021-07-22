@@ -15,42 +15,42 @@ const CountryDetails = ({ getCountry, newCountries }) => {
   // })
 
   return (
-    <div className="w-11/12 max-w-7xl m-auto">
-      <div>
-        <Link to="/" className="px-3 py-2 shadow-md rounded-sm">
-          <i className="fa fa-arrow-back mr-2"></i>
+    <div className="w-11/12 max-w-7xl m-auto text-base">
+      <div className="w-97 max-w-6/8 md:max-w-full md:w-full md:mb-14 mb-12">
+        <Link to="/" className="px-4 py-2 inline-block shadow-md rounded-md bg-white dark:bg-darkbg">
+          <i className="fa fa-arrow-left mr-2"></i>
           Go back
         </Link>
       </div>
-      <div className="flex md:items-center items-start justify-between md:flex-row flex-col m-auto max-w-97 md:max-w-full w-5/8 md:full">
-        <div className="md:w-6/8 w-full">
+      <div className="flex md:items-center items-start justify-between md:flex-row flex-col m-auto w-97 max-w-6/8 md:max-w-full md:w-full ">
+        <div className="md:w-6/8 w-full mb-14 md:mb-0">
           <img src={getCountry.flag} alt={getCountry.name} className="w-full h-full" />
         </div>
-        <div className="lg:w-5/12 md:w-6/12 w-full">
-          <h1>{getCountry.name}</h1>
-          <div className="flex items-start justify-between md:flex-row flex-col">
-            <div>
-              <p><span>Native Name:</span> {getCountry.nativeName}</p>
-              <p><span>Population:</span> {getCountry.population}</p>
-              <p><span>Region:</span> {getCountry.region}</p>
-              <p><span>Sub Region:</span> {getCountry.subregion}</p>
-              <p><span>Capital:</span> {getCountry.capital}</p>
+        <div className="lg:w-6/8 md:w-6/12 w-full">
+          <h1 className="lg:text-3xl text-2xl font-bold mb-8">{getCountry.name}</h1>
+          <div className="flex items-start justify-between md:flex-row flex-col mb-12">
+            <div className="md:mb-0 mb-12">
+              <p className="mb-1"><span className="font-bold">Native Name:</span> {getCountry.nativeName}</p>
+              <p className="mb-1"><span className="font-bold">Population:</span> {getCountry.population}</p>
+              <p className="mb-1"><span className="font-bold">Region:</span> {getCountry.region}</p>
+              <p className="mb-1"><span className="font-bold">Sub Region:</span> {getCountry.subregion}</p>
+              <p className="mb-1"><span className="font-bold">Capital:</span> {getCountry.capital}</p>
             </div>
             <div>
-              <p><span>Top Level Domain:</span> {getCountry.TopLevelDomain}</p>
+              <p className="mb-1"><span className="font-bold">Top Level Domain:</span> {getCountry.TopLevelDomain}</p>
               {getCountry.currencies.map((currency) => {
-                return <p><span>Currencies:</span> {currency.name}</p>
+                return <p className="mb-1"><span className="font-bold">Currencies:</span> {currency.name}</p>
               })}
-              {getCountry.currencies.map((currency) => {
-                return <p><span>Languages:</span> {getCountry.languages.name}</p>
-              })}
+              
+                <p className="mb-1"><span className="font-bold">Languages:</span> { getCountry.languages.map((language) => `${language.name}, `)}</p>
+
             </div>
           </div>
-          <div>
-            <p>Border Countries:</p>
+          <div className="flex lg:flex-row flex-col">
+            <p className="font-bold text-base mr-6 mb-4">Border Countries:</p>
             <div>
               {getCountry.borders.map((border) => {
-                return <span>{border}</span>
+                return <span className="px-3 py-2 mr-3 text-sm rounded-sm shadow-md bg-white dark:bg-darkbg">{border}</span>
               })}
               
               <span></span>
