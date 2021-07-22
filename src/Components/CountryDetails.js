@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CountryDetails = ({ getCountry, newCountries }) => {
+const CountryDetails = ({ getCountry, newCountries, setGetCountry }) => {
+
+  const showBorderCountry = (e) => {
+    const filteredBorderCountry = newCountries.filter(borderCountry => {
+      console.log(borderCountry.cioc.includes(e.target.innerHTML))
+      return borderCountry.cioc.includes(e.target.innerHTML);
+    })
+    setGetCountry(filteredBorderCountry)
+  }
+  
 
   // const ncCountries = newCountries.filter(nc => {
   //   console.log(nc.name.includes(getCountry))
@@ -16,7 +25,7 @@ const CountryDetails = ({ getCountry, newCountries }) => {
 
   return (
     <div className="w-11/12 max-w-7xl m-auto text-base">
-      <div className="w-97 max-w-6/8 md:max-w-full md:w-full md:mb-14 mb-12">
+      <div className="w-97 max-w-6/8 md:max-w-full md:w-full m-auto md:mb-14 mb-12">
         <Link to="/" className="px-4 py-2 inline-block shadow-md rounded-md bg-white dark:bg-darkbg">
           <i className="fa fa-arrow-left mr-2"></i>
           Go back
@@ -50,7 +59,7 @@ const CountryDetails = ({ getCountry, newCountries }) => {
             <p className="font-bold text-base mr-6 mb-4">Border Countries:</p>
             <div>
               {getCountry.borders.map((border) => {
-                return <span className="px-3 py-2 mr-3 text-sm rounded-sm shadow-md bg-white dark:bg-darkbg">{border}</span>
+                return <span onClick={showBorderCountry} className="px-3 py-2 mr-3 text-sm rounded-sm shadow-md bg-white dark:bg-darkbg">{border}</span>
               })}
               
               <span></span>
