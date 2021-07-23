@@ -12,6 +12,8 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [getCountry, setGetCountry] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+  const [regionValue, setRegionValue] = useState("");
+  const [regionDisplayValue, setRegionDisplayValue] = useState("Filter by Region");
 
   useEffect(() => {
 
@@ -38,10 +40,14 @@ function App() {
               searchText={searchText}
               setSearchText={setSearchText}
               setGetCountry={setGetCountry}
+              regionValue={regionValue}
+              setRegionValue={setRegionValue}
+              regionDisplayValue={regionDisplayValue} 
+              setRegionDisplayValue={setRegionDisplayValue}
             />
             )}
           />
-          <Route path="/DetailsPage" render={(props) => (
+          <Route path="/DetailsPage/:name" render={(props) => (
             <DetailsPage 
               {...props} 
               newCountries={newCountries} 

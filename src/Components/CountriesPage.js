@@ -5,7 +5,7 @@ import Countries from './Countries'
 
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-const CountriesPage = ({ newCountries, searchText, setSearchText, setGetCountry }) => {
+const CountriesPage = ({ newCountries, searchText, setSearchText, setGetCountry, regionValue, setRegionValue, regionDisplayValue, setRegionDisplayValue }) => {
   return (
     <div className="py-8 md:py-14 bg-lightbg dark:bg-verydarkbg text-lighttext dark:text-white relative top-20 sm:top-16">
       {/* <Navbar /> */}
@@ -13,12 +13,18 @@ const CountriesPage = ({ newCountries, searchText, setSearchText, setGetCountry 
         newCountries={newCountries}
         searchText={searchText}
         setSearchText={setSearchText}
+        regionValue={regionValue} 
+        setRegionValue={setRegionValue}
+        regionDisplayValue={regionDisplayValue} 
+        setRegionDisplayValue={setRegionDisplayValue}
       />
       <Countries 
         newCountries={newCountries} 
         searchText={searchText}
         setSearchText={setSearchText} 
         setGetCountry={setGetCountry}
+        regionValue={regionValue} 
+        setRegionValue={setRegionValue}
       />
     </div>
   )

@@ -15,8 +15,8 @@ const CountryCard = ({ countries, setGetCountry }) => {
     <>
       { countries.map(country => 
 
-      // country > 0 ? 
-        <Link key={country.numericCode} onClick={() => setGetCountry(country)} to="/DetailsPage" className="m-auto max-w-97 sm:max-w-full sm:w-6/8 md:w-4/8 lg:w-2/8 text-sm dark:bg-darkbg bg-white mb-14 rounded-md shadow-md">
+      // country === null ? <h1>Loading...</h1> :
+        <Link key={country.numericCode} onClick={() => setGetCountry(country)} to={`/DetailsPage/${country.name}`} className="m-auto max-w-97 sm:max-w-full sm:w-6/8 md:w-4/8 lg:w-2/8 text-sm dark:bg-darkbg bg-white mb-14 rounded-md shadow-md">
           <figure className="h-44 sm:h-36 w-full rounded-t-md">
             <img src={country.flag} alt="flag" className="h-full w-full rounded-t-md" />
           </figure>
@@ -27,8 +27,8 @@ const CountryCard = ({ countries, setGetCountry }) => {
             <p className="text-xs mb-1"><span className="font-semibold text-sm">Capital:</span> {country.capital}</p> 
           </div>
         </Link>
-        // : 
-        // <h1>Loading...</h1>
+         
+        
         )} 
 
           {/* <Link to="/DetailsPage" className="m-auto max-w-97 sm:max-w-full sm:w-6/8 md:w-4/8 lg:w-2/8 text-sm dark:bg-darkbg bg-white mb-14 rounded-md shadow-md">

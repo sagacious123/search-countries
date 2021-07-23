@@ -1,27 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const CountryDetails = ({ getCountry, newCountries, setGetCountry }) => {
 
-  const showBorderCountry = (e) => {
-    const filteredBorderCountry = newCountries.filter(borderCountry => {
-      console.log(borderCountry.cioc.includes(e.target.innerHTML))
-      return borderCountry.cioc.includes(e.target.innerHTML);
-    })
-    setGetCountry(filteredBorderCountry)
-  }
+  console.log(getCountry);
+
   
 
-  // const ncCountries = newCountries.filter(nc => {
-  //   console.log(nc.name.includes(getCountry))
-  //   if(nc.name.includes(getCountry)) {
-  //     console.log(nc)
-  //     return nc
-  //   } else {
-  //     console.log(getCountry)
-  //   }
-  //   // return nc.name === getCountry;
-  // })
+  const showBorderCountry = (e) => {
+    const filteredBorderCountry = newCountries.filter(borderCountry => {
+      console.log(borderCountry.alpha3Code.includes(e.target.innerHTML))
+      return borderCountry.alpha3Code.includes(e.target.innerHTML);
+     
+    })
+    
+    setGetCountry(filteredBorderCountry)
+    console.log(filteredBorderCountry);
+  }
+  // console.log(filteredBorderCountry)
+  // setGetCountry(filteredBorderCountry)
+  useEffect(() => {
+    setGetCountry(getCountry)
+  }, [getCountry])
+  console.log(getCountry)
 
   return (
     <div className="w-11/12 max-w-7xl m-auto text-base">
@@ -59,7 +60,13 @@ const CountryDetails = ({ getCountry, newCountries, setGetCountry }) => {
             <p className="font-bold text-base mr-6 mb-4">Border Countries:</p>
             <div>
               {getCountry.borders.map((border) => {
-                return <span onClick={showBorderCountry} className="px-3 py-2 mr-3 text-sm rounded-sm shadow-md bg-white dark:bg-darkbg">{border}</span>
+                newCountries.filter((newCon) => {
+                  if(newCon.alpha3Code.includes(border)) {
+                    const nco = newCon.name;
+                    console.log(nco);
+
+                return <span onClick={showBorderCountry} className="px-3 py-2 mr-3 text-sm rounded-sm shadow-md bg-white dark:bg-darkbg">{`${nco}`}</span>} 
+                })
               })}
               
               <span></span>
