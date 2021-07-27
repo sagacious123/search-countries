@@ -10,7 +10,7 @@ function App() {
 
   const [newCountries, setNewCountries] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [getCountry, setGetCountry] = useState("");
+  const [getCountry, setGetCountry] = useState(JSON.parse(localStorage.getItem("getCountry")));
   const [darkMode, setDarkMode] = useState(false);
   const [regionValue, setRegionValue] = useState("");
   const [regionDisplayValue, setRegionDisplayValue] = useState("Filter by Region");

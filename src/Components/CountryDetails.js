@@ -3,26 +3,25 @@ import { Link } from 'react-router-dom'
 
 const CountryDetails = ({ getCountry, newCountries, setGetCountry }) => {
 
-  console.log(getCountry);
+  console.log(getCountry.name);
 
   
 
   const showBorderCountry = (e) => {
     const filteredBorderCountry = newCountries.filter(borderCountry => {
       console.log(borderCountry.alpha3Code.includes(e.target.innerHTML))
+      
       return borderCountry.alpha3Code.includes(e.target.innerHTML);
-     
+      
     })
-    
-    setGetCountry(filteredBorderCountry)
-    console.log(filteredBorderCountry);
+    setGetCountry(filteredBorderCountry[0])
   }
-  // console.log(filteredBorderCountry)
-  // setGetCountry(filteredBorderCountry)
+
   useEffect(() => {
-    setGetCountry(getCountry)
+    localStorage.setItem("getCountry", JSON.stringify(getCountry));
+    // setGetCountry(getCountry[0].name)
   }, [getCountry])
-  console.log(getCountry)
+  // console.log(getCountry[0].name)
 
   return (
     <div className="w-11/12 max-w-7xl m-auto text-base">
@@ -39,7 +38,7 @@ const CountryDetails = ({ getCountry, newCountries, setGetCountry }) => {
         <div className="lg:w-6/8 md:w-6/12 w-full">
           <h1 className="lg:text-3xl text-2xl font-bold mb-8">{getCountry.name}</h1>
           <div className="flex items-start justify-between md:flex-row flex-col mb-12">
-            <div className="md:mb-0 mb-12">
+            <div className="md:mb-0 mb-12 text-m">
               <p className="mb-1"><span className="font-bold">Native Name:</span> {getCountry.nativeName}</p>
               <p className="mb-1"><span className="font-bold">Population:</span> {getCountry.population}</p>
               <p className="mb-1"><span className="font-bold">Region:</span> {getCountry.region}</p>
@@ -58,16 +57,20 @@ const CountryDetails = ({ getCountry, newCountries, setGetCountry }) => {
           </div>
           <div className="flex lg:flex-row flex-col">
             <p className="font-bold text-base mr-6 mb-4">Border Countries:</p>
-            <div>
-              {getCountry.borders.map((border) => {
-                newCountries.filter((newCon) => {
-                  if(newCon.alpha3Code.includes(border)) {
-                    const nco = newCon.name;
-                    console.log(nco);
+            <div className="flex flex-row flex-wrap">
+              {
+              // newCountries.filter((newCon) => {
+              getCountry.borders.map((border) => {
+                
+                  // if(newCon.alpha3Code.includes(border)) {
 
-                return <span onClick={showBorderCountry} className="px-3 py-2 mr-3 text-sm rounded-sm shadow-md bg-white dark:bg-darkbg">{`${nco}`}</span>} 
+                    console.log(border);
+                    
+                    
+                 return <span onClick={showBorderCountry} className="px-3 mb-3 py-2 mr-3 text-sm cursor-pointer rounded-sm shadow-md dark:hover:bg-gray-700 hover:bg-gray-200 bg-white dark:bg-darkbg">{border}</span> 
                 })
-              })}
+              // })
+              }
               
               <span></span>
               <span></span>
