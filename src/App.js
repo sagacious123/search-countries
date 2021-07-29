@@ -39,6 +39,7 @@ function App() {
               newCountries={newCountries} 
               searchText={searchText}
               setSearchText={setSearchText}
+              getCountry={getCountry}
               setGetCountry={setGetCountry}
               regionValue={regionValue}
               setRegionValue={setRegionValue}
@@ -47,7 +48,7 @@ function App() {
             />
             )}
           />
-          <Route path="/DetailsPage/:name" render={(props) => (
+          <Route path="/DetailsPage" render={(props) => (
             <DetailsPage 
               {...props} 
               newCountries={newCountries} 
