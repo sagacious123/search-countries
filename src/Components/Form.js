@@ -28,7 +28,7 @@ const Form = ({ newCountries, searchText, setSearchText, regionValue, setRegionV
   return (
     <div className="mb-14">
       <form className="flex justify-between items-start sm:items-center flex-col sm:flex-row sm:max-w-7xl w-11/12 m-auto">
-        <div className="w-full sm:w-6/12 md:w-3/8 relative mb-10 sm:mb-0">
+        <div className="w-full sm:w-6/12 md:w-3/8 relative mb-9 sm:mb-0">
           <input type="text" placeholder="Search for a country..." value={searchText} onChange={(e) => setSearchText(e.target.value)} className="p-3 placeholder-gray-300 dark:placeholder-gray-400 text-base pl-16 px-4 rounded-md shadow-md w-full focus:ring-1 ring-gray-300 focus:outline-none bg-white dark:bg-darkbg" />
           <i className="fa fa-search absolute left-7 text-lg top-2 text-gray-300"></i>
         </div>

@@ -15,17 +15,14 @@ const Countries = ({ newCountries, searchText, setSearchText, getCountry, setGet
   return (
     <div className="w-5/8 sm:max-w-7xl sm:w-11/12 m-auto flex">
       <div className="flex flex-wrap sm:gap-4/9 md:gap-3/9 lg:gap-2/9 text-gray-800 dark:text-white">
-        { hasLoaded ? <CountryCard countries={filteredCountries} getCountry={getCountry} setGetCountry={setGetCountry} /> : <div className="h-screen w-screen flex items-center justify-center absolute top-0 left-0"><div className="cm-spinner"></div></div> }
-        {/* <i className="fa fa-spinner fa-spin text-4xl text-darkbg dark:text-lightbg block"></i> */}
-        {/* <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} /> */}
-        {/* <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} />
-        <CountryCard countries={filteredCountries} setGetCountry={setGetCountry} /> */}
+        { hasLoaded ? <CountryCard countries={filteredCountries} getCountry={getCountry} setGetCountry={setGetCountry} /> : 
+        <div className="h-screen w-screen flex items-center justify-center absolute top-0 left-0">
+          <div className="-top-14 sm:-top-20 relative flex items-center justify-center flex-col">
+            <div className="cm-spinner"></div>
+            <span className="text-sm font-bold inline-block mt-2 text-gray-400">Loading...</span>
+            </div>
+          </div> 
+        }
       </div>
     </div>
   )
